@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  php:
+    container_name: php-fpm
+    build:
+      context: .
+      dockerfile: dockerfile
+    volumes: 
+      - ./laravel:/var/www/laravel
+  
+  web:
+    image: nginx:1.19
+    container_name: nginx
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+    depends_on: 
+      - php
