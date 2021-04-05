@@ -1,5 +1,5 @@
 FROM php:7.4-fpm
-WORKDIR /var/www/laravel
+WORKDIR /var/www/project
 
 # Install packages
 RUN apt-get update && apt-get install -y curl zip unzip
@@ -9,7 +9,7 @@ RUN docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-enable pdo_mys
 RUN curl -sS https://getcomposer.org/installer | php  
 RUN mv composer.phar /usr/bin/composer
 
-COPY laravel/ /var/www/laravel/
+COPY project/ /var/www/project/
 RUN composer install
 
 # Install nodejs
