@@ -11,6 +11,7 @@ RUN mv composer.phar /usr/bin/composer
 
 COPY project/ /var/www/project/
 RUN composer install
+RUN cp .env.example .env && php artisan key:generate
 
 # Install nodejs
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash
