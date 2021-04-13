@@ -1,0 +1,14 @@
+# node
+FROM node:14.16 AS build
+WORKDIR /var/www/project
+
+COPY project/ /var/www/project/
+RUN npm install && npm run build
+
+# nginx
+FROM nginx:1.19
+WORKDIR /var/www/project
+COPY --from=build /var/www/project .
+
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
