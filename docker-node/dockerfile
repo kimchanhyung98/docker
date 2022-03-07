@@ -1,0 +1,7 @@
+FROM node:16
+
+# package update & install
+RUN apt update && apt upgrade -y && \
+    apt install -y curl unzip wget -y
+
+CMD bash -c "npm install && npm run start --host 0.0.0.0"

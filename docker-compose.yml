@@ -1,6 +1,15 @@
 version: "3.8"
 
 services:
+  frontend:
+    build: docker-node
+    ports:
+      - "3000:3000"
+    working_dir: ${WORK_DIR}
+    volumes:
+      - node-volume:${WORK_DIR}
+      - ${FRONTEND_DIR}:${WORK_DIR}
+
   backend:
     build: docker-laravel
     ports:
@@ -11,4 +20,5 @@ services:
       - ${BACKEND_DIR}:${WORK_DIR}
 
 volumes:
+  node-volume:
   laravel-volume:
