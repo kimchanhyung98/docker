@@ -1,4 +1,7 @@
-# PhpStorm
+# Config
+.env
+
+# JetBrains
 .idea
 
 # Log

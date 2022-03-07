@@ -1,0 +1,11 @@
+FROM php:8.1-fpm
+
+# package update & install
+RUN apt update && apt upgrade -y && \
+   apt install -y curl unzip wget -y
+# composer install
+RUN curl -sS https://getcomposer.org/installer | php && \
+   mv composer.phar /usr/local/bin/composer
+
+# Execute command after mounting a volume (https://stackoverflow.com/a/46792094)
+CMD bash -c "composer install && php artisan serve --host 0.0.0.0"

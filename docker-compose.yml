@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  backend:
+    build: docker-laravel
+    ports:
+      - "8000:8000"
+    working_dir: ${WORK_DIR}
+    volumes:
+      - laravel-volume:${WORK_DIR}
+      - ${BACKEND_DIR}:${WORK_DIR}
+
+volumes:
+  laravel-volume:
