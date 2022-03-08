@@ -19,6 +19,19 @@ services:
       - laravel-volume:${DIR_APP}
       - ${DIR_BACK}:${DIR_APP}
 
+  database:
+    image: mysql:8
+    ports:
+      - ${DB_PORT}:${DB_PORT}
+    environment:
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - database-volume:/var/lib/mysql
+
 volumes:
   node-volume:
   laravel-volume:
+  database-volume:
