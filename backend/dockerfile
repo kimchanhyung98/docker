@@ -8,4 +8,5 @@ RUN curl -sS https://getcomposer.org/installer | php && \
    mv composer.phar /usr/local/bin/composer
 
 # Execute command after mounting a volume (https://stackoverflow.com/a/46792094)
-CMD bash -c "composer install && php artisan serve --host 0.0.0.0"
+CMD bash -c "composer install"
+CMD bash -c "php artisan serve --host 0.0.0.0"

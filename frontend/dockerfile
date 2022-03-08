@@ -4,4 +4,6 @@ FROM node:16
 RUN apt update && apt upgrade -y && \
     apt install -y curl unzip wget -y
 
-CMD bash -c "npm install && npm run start --host 0.0.0.0"
+# Execute command after mounting a volume
+CMD bash -c "npm install"
+CMD bash -c "npm run start --host 0.0.0.0"
