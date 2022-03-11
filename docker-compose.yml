@@ -3,26 +3,10 @@ version: "3.8"
 services:
   web:
     build: nginx
+    restart: always
     ports:
       - "80:80"
-      # - "443:443"
     working_dir: /etc/nginx
-
-  frontend:
-    build: nodejs
-    hostname: frontend
-    working_dir: ${DIR_APP}
-    volumes:
-      - frontend-volume:${DIR_APP}
-      - ${DIR_FRONT}:${DIR_APP}
-
-  backend:
-    build: laravel
-    hostname: backend
-    working_dir: ${DIR_APP}
-    volumes:
-      - backend-volume:${DIR_APP}
-      - ${DIR_BACK}:${DIR_APP}
 
   database:
     image: mysql:8
@@ -35,6 +19,22 @@ services:
       - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
     volumes:
       - database-volume:/var/lib/mysql
+
+  frontend:
+    build: ${BUILD_FRONT}
+    hostname: frontend
+    working_dir: ${DIR_APP}
+    volumes:
+      - frontend-volume:${DIR_APP}
+      - ${DIR_FRONT}:${DIR_APP}
+
+  backend:
+    build: ${BUILD_BACK}
+    hostname: backend
+    working_dir: ${DIR_APP}
+    volumes:
+      - backend-volume:${DIR_APP}
+      - ${DIR_BACK}:${DIR_APP}
 
 volumes:
   frontend-volume:
