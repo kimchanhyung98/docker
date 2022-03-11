@@ -1,9 +1,9 @@
-FROM node:16
+FROM node:16.14
 
 # package update & install
 RUN apt update && apt upgrade -y && \
     apt install -y curl unzip wget -y
 
 # Execute command after mounting a volume
-CMD bash -c "npm install"
+CMD bash -c "npm install -g npm@8.5.4 && npm install"
 CMD bash -c "npm run start --host 0.0.0.0"
