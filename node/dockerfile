@@ -1,13 +1,9 @@
 FROM node:16.14
 
-# docker-compose working_dir not work
-WORKDIR /app
-
 # package update & install
 RUN apt update && apt upgrade -y && \
     apt install -y curl unzip wget -y
+RUN npm install -g npm@8.5.4
 
 # Execute command after mounting a volume
-# CMD "npm install -g npm@8.5.4 && npm install --force"
-CMD bash -c "npm install -g npm@8.5.4 && npm install --force"
-CMD bash -c "npm run start:dev"
+CMD bash -c "npm i --force && npm run start:dev"

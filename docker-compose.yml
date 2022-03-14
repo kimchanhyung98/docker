@@ -11,6 +11,7 @@ services:
   database:
     image: mysql:8
     hostname: database
+    restart: always
     ports:
       - ${DB_PORT}:${DB_PORT}
     environment:
@@ -24,20 +25,20 @@ services:
   frontend:
     build: ${BUILD_FRONT}
     hostname: frontend
+    restart: always
     working_dir: ${DIR_APP}
     volumes:
-      - frontend-volume:${DIR_APP}
       - ${DIR_FRONT}:${DIR_APP}
+      - /app/node_modules
 
   backend:
     build: ${BUILD_BACK}
     hostname: backend
+    restart: always
     working_dir: ${DIR_APP}
     volumes:
-      - backend-volume:${DIR_APP}
       - ${DIR_BACK}:${DIR_APP}
+      - /${DIR_APP}/node_modules
 
 volumes:
-  frontend-volume:
-  backend-volume:
   database-volume:
