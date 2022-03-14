@@ -1,11 +1,40 @@
-# Study docker
+# Docker
+로컬 개발 환경 설정
 
-```shell
-sudo vi /private/etc/hosts
+## Guide
+### Modify hosts file
+- macOS
+  - sudo vi /private/etc/hosts
 
+- Windows
+  - Notepad (Run as Administrator)
+    C:\Windows\System32\Drivers\etc\hosts
+  
+```yaml
+# Added by Docker Desktop
+# To allow the same kube context to work on the host and the container:
+127.0.0.1 kubernetes.docker.internal
 127.0.0.1 domain.test
 127.0.0.1 api.domain.test
+# End of section
 ```
+
+
+### Command
+- ``` docker-compose up ```
+  - 모든 컨테이너를 생성, 실행
+    - 백그라운드에서 실행 시 -d
+    - 컨테이너 재생성 시 --force-recreate
+  
+- ``` docker-compose down ```
+  - 모든 컨테이너를 정지, 삭제
+    - up 커맨드와 정반대의 동작
+  
+- ``` docker system prune -a --volumes ```
+  - 사용하지 않는 리소스 전부 삭제
+
+- ``` docker-compose config ```
+  - 적용된 설정 확인
 
 
 ## Study
@@ -14,11 +43,3 @@ sudo vi /private/etc/hosts
 - [docker-compose](https://docs.microsoft.com/ko-kr/visualstudio/docker/tutorials/use-docker-compose)
 - [docker-guides](https://docs.docker.com/get-started/overview/)
 - [toast](https://meetup.toast.com/posts/277)
-
-### Command
-- start
-  - docker-compose up
-- delete with volumes
-  - docker system prune -a --volumes
-- config
-  - docker-compose config
