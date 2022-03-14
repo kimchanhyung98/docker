@@ -20,6 +20,29 @@
 ```
 
 
+### Add .env file
+- Working directory (**DIR_FRONT**, **DIR_BACK**)
+- Language (Select **node** or **php-fpm**)
+
+```dotenv
+# Database
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=database
+DB_USERNAME=admin
+DB_PASSWORD=password
+
+# Directory
+DIR_APP=/app
+DIR_FRONT=~/Documents/GitHub/frontend/
+DIR_BACK=~/Documents/GitHub/backend/
+
+# Build
+BUILD_FRONT=node
+BUILD_BACK=node
+```
+
+
 ### Command
 - ``` docker-compose up ```
   - 모든 컨테이너를 생성, 실행
