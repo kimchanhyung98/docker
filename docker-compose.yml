@@ -29,7 +29,6 @@ services:
     working_dir: ${DIR_APP}
     volumes:
       - ${DIR_FRONT}:${DIR_APP}
-      - /app/node_modules
 
   backend:
     build: ${BUILD_BACK}
@@ -38,7 +37,6 @@ services:
     working_dir: ${DIR_APP}
     volumes:
       - ${DIR_BACK}:${DIR_APP}
-      - /${DIR_APP}/node_modules
 
 volumes:
   database-volume:
