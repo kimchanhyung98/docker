@@ -19,6 +19,6 @@ sudo vi /private/etc/hosts
 - start
   - docker-compose up
 - delete with volumes
-  - docker system prune --volumes
+  - docker system prune -a --volumes
 - config
   - docker-compose config
