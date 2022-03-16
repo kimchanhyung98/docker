@@ -2,13 +2,13 @@
 로컬 개발 환경 설정
 
 ## Guide
-### Modify hosts file
+### hosts 설정
 - macOS
   - sudo vi /private/etc/hosts
 
 - Windows
-  - Notepad (Run as Administrator)
-    C:\Windows\System32\Drivers\etc\hosts
+  - C:\Windows\System32\Drivers\etc\hosts
+  - *메모장 (관리자 권한으로 실행)*
   
 ```yaml
 # Added by Docker Desktop
@@ -20,27 +20,17 @@
 ```
 
 
-### Add .env file
-- Working directory (**DIR_FRONT**, **DIR_BACK**)
-- Language (Select **node** or **php-fpm**)
+### .env 설정
+- 디렉토리 추가
+  - 코드가 있는 위치로 설정
+  - macOS
+    - ~/Documents/GitHub/{directory}
+  - Windows
+    - C:\Users\{user_name}\Documents\GitHub\{directory}
 
-```dotenv
-# Database
-DB_HOST=localhost
-DB_PORT=3306
-DB_DATABASE=database
-DB_USERNAME=admin
-DB_PASSWORD=password
-
-# Directory
-DIR_APP=/app
-DIR_FRONT=~/Documents/GitHub/frontend/
-DIR_BACK=~/Documents/GitHub/backend/
-
-# Build
-BUILD_FRONT=node
-BUILD_BACK=node
-```
+- Language
+  - node
+  - php-fpm
 
 
 ### Command
