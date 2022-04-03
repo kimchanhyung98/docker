@@ -1,16 +1,12 @@
-# Docker
-로컬 개발 환경 설정
+# Docker Compose
+- 로컬 개발 환경 설정
+- 여러 프로젝트에서 사용하기 위해, .env로 설정이나 경로 등 분리
 
-## Guide
-### hosts 설정
-- macOS
-  - sudo vi /private/etc/hosts
+## hosts 설정
 
-- Windows
-  - C:\Windows\System32\Drivers\etc\hosts
-  - *메모장 (관리자 권한으로 실행)*
-  
 ```yaml
+...
+
 # Added by Docker Desktop
 # To allow the same kube context to work on the host and the container:
 127.0.0.1 kubernetes.docker.internal
@@ -19,10 +15,16 @@
 # End of section
 ```
 
+- macOS
+  - sudo vi /private/etc/hosts
 
-### .env 설정
-- 디렉토리 추가
-  - 코드가 있는 위치로 설정
+- Windows
+  - C:\Windows\System32\Drivers\etc\hosts
+  - 수정 시, 관리자 권한으로
+
+
+## .env 설정
+- 디렉토리
   - macOS
     - ~/Documents/GitHub/{directory}
   - Windows
@@ -33,7 +35,7 @@
   - php-fpm
 
 
-### Command
+## Command
 - ``` docker-compose up ```
   - 모든 컨테이너를 생성, 실행
     - 백그라운드에서 실행 시 -d
